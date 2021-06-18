@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void ShowCustomersOnListView(DataBaseHelper dataBaseHelper) {
+    public void ShowCustomersOnListView(DataBaseHelper dataBaseHelper) {
         //customerArrayAdapter = new ArrayAdapter<CustomerModel>(MainActivity.this, android.R.layout.simple_list_item_1, dataBaseHelper.getEveryone());
        // lv_customerList.setAdapter(customerArrayAdapter);
     }

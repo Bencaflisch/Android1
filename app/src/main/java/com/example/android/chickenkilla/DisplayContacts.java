@@ -3,6 +3,7 @@ package com.example.android.chickenkilla;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,9 +37,10 @@ public class DisplayContacts extends AppCompatActivity {
                 showCustomersOnListView(v, searchTerms);
             }
         });
+
     }
 
-    public void showCustomersOnListView(View v, String searchTerms) {
+    private void showCustomersOnListView(View v, String searchTerms) {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(DisplayContacts.this);
         List list = dataBaseHelper.getSearch("");
         if(list.isEmpty()){

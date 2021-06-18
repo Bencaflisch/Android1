@@ -59,12 +59,34 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean deleteOne(CustomerModel customerModel) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + CUSTOMER_TABLE + " WHERE " + COLUMN_ID + " = " + customerModel.getId();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+
     public List<CustomerModel> getSearch(String searchTerms) {
         System.out.println("here 1");
         List<CustomerModel> returnList = new ArrayList<>();
 
 
-        String queryString = "SELECT * FROM " + CUSTOMER_TABLE + " where " + " like '%" + searchTerms + "%'";
+        String queryString = "SELECT * FROM " + CUSTOMER_TABLE + " where "
+                + COLUMN_CUSTOMER_NAME + " like'%" + searchTerms + "%' OR "
+                + COLUMN_CUSTOMER_ADDRESS + " like'%" + searchTerms + "%' OR "
+                + COLUMN_CUSTOMER_VIOLATION + " like'%" + searchTerms + "%' OR "
+                + COLUMN_DATE + " like'%" + searchTerms + "%' OR "
+                + COLUMN_SURVEYOR + " like'%" + searchTerms + "%'";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
